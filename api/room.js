@@ -29,7 +29,7 @@ router.get('/', function (req, res, next) {
         // rename _id to id and remove __v member
         rooms = rooms.map((room) => room.json())
 
-        res.json({ message: 'success', 'result': rooms })
+        res.json({ result: rooms })
     })
 })
 
@@ -45,7 +45,7 @@ router.get('/:id', function (req, res, next) {
             res.status(404).json({ message: `Room with ${req.params.id} not found.` })
             return
         }
-        res.json({ message: 'success', result: room.json() })
+        res.json(room.json())
     })
 })
 
@@ -69,9 +69,9 @@ router.put('/:id', function (req, res, next) {
         })
         room.save(function (err, room) {
             if (err) {
-                res.status(400).json({ message: 'error', detail: err.message })
+                res.status(400).json({ message: err.message })
             } else {
-                res.json({ message: 'success', result: room.json() })
+                res.json(room.json())
             }
         })
     })
@@ -88,7 +88,7 @@ router.post('/', function (req, res, next) {
         if (err) return console.error(err)
         res.json(500, { message: err.message })
     })
-    res.json({ message: 'success', 'id': room._id })
+    res.json({ id: room._id })
 })
 
 module.exports = router
