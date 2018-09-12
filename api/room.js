@@ -49,7 +49,35 @@ router.get('/:id', function (req, res, next) {
     })
 })
 
-/* Create a new room */
+/* PUT update details of a public room */
+router.put('/:id', function (req, res, next) {
+    Room.findById(req.params.id, function (err, room) {
+        if (err) {
+            console.log(err.message)
+            res.status(400).json({ message: err.message })
+            return
+        }
+        if (!room) {
+            res.status(404).json({ message: `Room with ${req.params.id} not found.` })
+            return
+        }
+        const attrs = ['name', 'description', 'expire_time', 'public']
+        attrs.forEach((attr) => {
+            if (req.body[attr]) {
+                room[attr] = req.body[attr]
+            }
+        })
+        room.save(function (err, room) {
+            if (err) {
+                res.status(400).json({ message: 'error', detail: err.message })
+            } else {
+                res.json({ message: 'success', result: room.json() })
+            }
+        })
+    })
+})
+
+/* POST create a new room */
 router.post('/', function (req, res, next) {
     var data = req.body
     // remove unsafe attrs
