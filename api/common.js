@@ -1,6 +1,12 @@
-const host_url = 'localhost'
-const mongodb_url = 'mongodb://localhost:27017'
+const environment = process.env.NODE_ENV
 
-const ws_port = 8010
+// Get db and WebSocket port config from environmental variables
 
-module.exports = { host_url, mongodb_url, ws_port }
+if (environment === 'production') {
+    console.assert(process.env.MONGODB, 'MongoDB connection URL not specified in environment variables')
+}
+const mongodb_url = process.env.MONGODB || 'mongodb://localhost:27017'
+
+const ws_port = process.env.WEBSOCKET_PORT || 8010
+
+module.exports = { mongodb_url, ws_port }

@@ -1,6 +1,6 @@
 # chat
 
-A WIP anonymous chatroom app built with Node.js, MongoDB, and React.
+A WIP anonymous chatroom app built with WebSocket, Node.js, MongoDB, and React.
 
 ## Installing
 ```
