@@ -85,10 +85,13 @@ router.post('/', function (req, res, next) {
 
     var room = new Room(data)
     room.save(function (err, obj) {
-        if (err) return console.error(err)
-        res.json(500, { message: err.message })
+        if (err) {
+            console.error(err)
+            res.json(500, { message: err.message })
+        } else {
+            res.json({ id: room._id })
+        }
     })
-    res.json({ id: room._id })
 })
 
 module.exports = router
