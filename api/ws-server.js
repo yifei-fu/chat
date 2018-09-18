@@ -1,7 +1,12 @@
 const WebSocket = require('ws')
+var app = require('../app')
 const common = require('./common')
 
-const wss = new WebSocket.Server({ port: common.ws_port })
+// Create a server for both http and ws
+const http_server = require('http').createServer(app)
+const wss = new WebSocket.Server({ server: http_server })
+
+// WebSocket API implementation
 const default_username = 'ANON'
 const ws_init_timeout = 10000 // time allowed for client to send init action request in ms
 
@@ -140,4 +145,4 @@ wss.on('connection', function (ws) {
     })
 })
 
-module.exports = wss
+module.exports = http_server

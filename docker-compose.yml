@@ -7,7 +7,7 @@ services:
     environment:
     - NODE_ENV=production
     - MONGODB=mongodb://mongodb:27017/chat
-    - WEBSOCKET_PORT=80
+    - PORT=3000
     depends_on:
     - mongodb
   mongodb:

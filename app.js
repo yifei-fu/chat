@@ -30,5 +30,3 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/api/room', roomRouter)
 
 module.exports = app
-
-require('./api/ws-server')

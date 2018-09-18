@@ -1,11 +1,17 @@
 import axios from 'axios'
 
-export const base_url = 'http://localhost:3000'
+var base_url
+if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
+    base_url = ''
+} else {
+    base_url = 'http://localhost:3000'
+}
+export { base_url }
 
 // functions that return api objects for generic resources
 // callback accepts two params: status ('success' or 'error') and data (all loaded data)
 
-export function fetch_room_by_id(id, callback) {
+export function fetch_room_by_id (id, callback) {
     var api = {
         response: null,
         callback,
@@ -26,7 +32,7 @@ export function fetch_room_by_id(id, callback) {
     return api
 }
 
-export function create_room() {
+export function create_room () {
     var api = {
         response: null,
         status: 'ready',
@@ -39,14 +45,14 @@ export function create_room() {
                         'Content-Type': 'application/json'
                     }
                 }).then(response => {
-                    api.status = 'success'
-                    api.response = response.data
-                    if (callback) { callback('success', api.response) }
-                }).catch(error => {
-                    this.status = 'error'
-                    console.log(error)
-                    if (callback) { callback('error', null) }
-                })
+                api.status = 'success'
+                api.response = response.data
+                if (callback) { callback('success', api.response) }
+            }).catch(error => {
+                this.status = 'error'
+                console.log(error)
+                if (callback) { callback('error', null) }
+            })
         }
     }
     return api

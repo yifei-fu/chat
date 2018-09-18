@@ -1,8 +1,9 @@
 var express = require('express')
 var router = express.Router()
 var mongoose = require('mongoose')
+const common = require('./common')
 
-mongoose.connect('mongodb://localhost:27017/chat', { useNewUrlParser: true })
+mongoose.connect(common.mongodb_url, { useNewUrlParser: true })
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
 
 var roomSchema = new mongoose.Schema({
