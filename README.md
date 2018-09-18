@@ -5,19 +5,22 @@ A WIP anonymous chatroom app built with WebSocket, Node.js, MongoDB, and React.
 ## Installing
 ```
 npm install
-cd frontend
-npm install
+cd ./frontend & npm install
 ```
 
 ## Running for development
 ```
-npm start
-cd frontend
-npm start
+npm start & 
+npm start --prefix ./frontend &
+```
+
+## Deploy with Docker Compose
+```
+docker-compose build
+docker-compose up -d
 ```
 
 ## To-dos
 * documentation
 * unit tests
-* dockerfiles for development and deployment
 * integrate with ELK stack
