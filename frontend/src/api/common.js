@@ -1,17 +1,13 @@
 const current_domain = function () {
     var domain = window.location.hostname
-    if (window.location.port !== 80) {
+    // add port number if necessary
+    if (!new Set(['', 80, '80']).has(window.location.port)) {
         domain += `:${window.location.port}`
     }
     return domain
 }
 
-var api_url
-if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
-    api_url = current_domain()
-} else {
-    api_url = 'http://localhost:3000'
-}
+const api_url = ''
 
 const frontend_url = current_domain()
 
