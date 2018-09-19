@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { base_url, create_room } from '../api/room'
+import { create_room } from '../api/room'
+import { frontend_url } from '../api/common'
 var QRCode = require('qrcode.react')
 
 export default class NewRoom extends Component {
@@ -23,7 +25,7 @@ export default class NewRoom extends Component {
         if (!this.state.response) {
             return null
         }
-        return base_url + '/room/' + this.state.response.id
+        return frontend_url + `/${this.state.response.id}`
     }
     handleChange (e) {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
@@ -67,8 +69,8 @@ export default class NewRoom extends Component {
                 <div class='ui message'>
                     <p>By using this service, you agree to the Terms and Conditions</p>
                 </div>
-                <button class='ui button' onClick={this.handleSubmit}>
-                    Okay
+                <button class='ui primary button' onClick={this.handleSubmit}>
+                    OK
                 </button>
             </div >
         )

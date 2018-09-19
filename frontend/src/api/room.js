@@ -1,13 +1,5 @@
 import axios from 'axios'
-
-var base_url
-if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
-    base_url = ''
-} else {
-    base_url = 'http://localhost:3000'
-}
-export { base_url }
-
+import { api_url } from './common'
 // functions that return api objects for generic resources
 // callback accepts two params: status ('success' or 'error') and data (all loaded data)
 
@@ -18,7 +10,7 @@ export function fetch_room_by_id (id, callback) {
         status: 'loading'
     }
     axios.request({
-        url: base_url + `/api/room/${id}`,
+        url: api_url + `/api/room/${id}`,
         method: 'get'
     }).then(response => {
         api.status = 'success'
@@ -39,7 +31,7 @@ export function create_room () {
         submit: function (data, callback) {
             this.status = 'loading'
             axios.post(
-                base_url + '/api/room',
+                api_url + '/api/room',
                 data, {
                     headers: {
                         'Content-Type': 'application/json'
