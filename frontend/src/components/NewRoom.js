@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { create_room } from '../api/room'
 import { frontend_url } from '../api/common'
+import TermsModal from './TermsModal'
 var QRCode = require('qrcode.react')
 
 export default class NewRoom extends Component {
@@ -67,7 +68,7 @@ export default class NewRoom extends Component {
                 <div class='ui divider' />
 
                 <div class='ui message'>
-                    <p>By using this service, you agree to the Terms and Conditions</p>
+                    <p>By using this website, you agree to the <TermsModal trigger={<a>Terms of Services</a>}></TermsModal></p>
                 </div>
                 <button class='ui primary button' onClick={this.handleSubmit}>
                     OK
