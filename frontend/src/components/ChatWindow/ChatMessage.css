@@ -1,0 +1,30 @@
+.message-wrapper {
+    margin-bottom: 20px;
+    padding: 20px
+}
+
+.message-self, .message-self div {
+    margin-left: auto;
+    margin-right: 0px;
+    width: fit-content
+}
+
+.message-other, .message-other div {
+    margin-left: 0px;
+    margin-right: auto;
+    width: fit-content
+}
+
+.message-self .message {
+    padding: 10px;
+    margin-top: 0px;
+    background-color: #3498db;
+    color: white;
+}
+
+.message-other .message {
+    padding: 10px;
+    margin-top: 0px;
+    background-color: #bdc3c7;
+    color: black;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { base_url, create_room } from '../api/room'
+import ChatWindow from '../components/ChatWindow'
 
 export default class Room extends Component {
     constructor (props) {
@@ -10,7 +11,9 @@ export default class Room extends Component {
     }
     render () {
         return (
-            <p>{this.state.room_id}</p>
+            <div>
+                <ChatWindow></ChatWindow>
+            </div>
         )
     }
 }

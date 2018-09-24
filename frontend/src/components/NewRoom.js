@@ -33,6 +33,7 @@ export default class NewRoom extends Component {
         this.setState({ form: { ...this.state.form, [e.target.name]: value } })
     }
     handleSubmit (e) {
+        e.preventDefault()
         this.setState({ status: 'loading' })
         this.api.submit(this.data, (status, response) => {
             this.setState({ status, response })
