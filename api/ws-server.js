@@ -46,7 +46,7 @@ var build_response = function (ws, req, status, message) {
     )
 }
 var build_event = function (ws, event_type, body) {
-    const response = { type: 'event', event_type, ...body }
+    const response = { type: 'event', event_type, ...body, time: Date.now() }
     return JSON.stringify(response)
 }
 
