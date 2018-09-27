@@ -41,7 +41,7 @@ var build_response = function (ws, req, status, message) {
             type: 'response',
             status,
             message,
-            id: req.id || null
+            id: (req && req.id) ? req.id : null
         }
     )
 }
