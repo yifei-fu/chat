@@ -13,7 +13,7 @@ export default class ChatMessage extends Component {
                     this.props.data && (
                         <div className={message_class}>
                             <div className='username' style={{ display: 'block' }}>{this.props.data.username || default_username}</div>
-                            <Message compact className='ui message'>{this.props.data.text}</Message>
+                            <Message compact className='ui message'>{this.props.data.message}</Message>
                         </div>
                     )
                 }
