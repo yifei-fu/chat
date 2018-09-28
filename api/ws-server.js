@@ -93,7 +93,7 @@ var handle_request = {
         },
         send: (ws, req) => {
             broadcast(ws.client.room_id,
-                build_event(ws, 'chat_message', { user: ws.client.username, message: req.message }))
+                build_event(ws, 'chat_message', { user: ws.client.username, message: req.message || '' }))
         }
     },
     // method to handle request
@@ -139,7 +139,8 @@ wss.on('connection', function (ws) {
             build_event(ws, 'user_leave', { user: ws.client.username }))
 
         // clean up empty room
-        if (ws_by_room[ws.client.room_id].size() === 0) {
+        if (ws_by_room[ws.client.room_id] &&
+            ws_by_room[ws.client.room_id].size === 0) {
             delete ws_by_room[ws.client.room_id]
         }
     })
