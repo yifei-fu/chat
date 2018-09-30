@@ -1,0 +1,13 @@
+.chat-window-container {
+    height: 100vh;
+    overflow: scroll;
+    overflow-x: hidden
+}
+
+.chat-window-container .input-form {
+    background: white;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+

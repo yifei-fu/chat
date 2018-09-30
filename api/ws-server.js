@@ -30,7 +30,7 @@ var Client = function (init_request) {
             * status: success | error
             * message
         For events:
-            * event: chat_message | user_join | user_leave | user_change_username
+            * event_type: chat_message | user_join | user_leave | user_change_username
             * ...
  */
 

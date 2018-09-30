@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import ChatAPI from '../../api/ChatAPI'
 
-import { TextArea } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import MessageList from './MessageList'
 import InputForm from './InputForm'
+import './ChatWindow.css'
 
 export default class ChatWindow extends Component {
     constructor (props) {
@@ -22,11 +23,19 @@ export default class ChatWindow extends Component {
     render () {
         return (
             <div>
-                <MessageList
-                    data={this.state.messages}>
-                </MessageList>
-                <InputForm api={this.chat_api}></InputForm>
+                <Header as='h1' color='grey' inverted block>
+                    Room ID = {this.props.id}
+                </Header>
+                <div className='chat-window-container'>
+
+                    <MessageList
+                        className='message-list'
+                        data={this.state.messages}>
+                    </MessageList>
+                    <InputForm className='input-form' api={this.chat_api}></InputForm>
+                </div>
             </div>
+            
         )
     }
 }
