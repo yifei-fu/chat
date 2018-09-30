@@ -12,7 +12,7 @@ export default class ChatWindow extends Component {
         this.state = {
             messages: []
         }
-        this.chat_api = new ChatAPI(this.props.id)
+        this.chat_api = new ChatAPI(this.props.room_id)
         this.chat_api.on('event', (data) => {
             console.log(data)
             this.setState({
@@ -24,7 +24,7 @@ export default class ChatWindow extends Component {
         return (
             <div>
                 <Header as='h1' color='grey' inverted block>
-                    Room ID = {this.props.id}
+                    Room ID = {this.props.room_id}
                 </Header>
                 <div className='chat-window-container'>
 
