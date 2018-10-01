@@ -21,10 +21,10 @@ if (process.env.NODE_ENV !== 'production') {
     })
 }
 
-// serve static files in production
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'frontend/build')))
-}
+// serve static files
+app.get('*', function (req, res) {
+    res.sendFile('index.html', { root: path.join(__dirname, 'frontend/build/') })
+})
 
 // API endpoints
 app.use('/api/room', roomRouter)
