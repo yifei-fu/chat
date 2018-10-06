@@ -8,6 +8,8 @@ services:
     - NODE_ENV=production
     - MONGODB=mongodb://mongodb:27017/chat
     - PORT=3000
+    - WS_URL=ws://localhost:3000
+    - FRONTEND_URL=localhost:3000
     depends_on:
     - mongodb
   mongodb:

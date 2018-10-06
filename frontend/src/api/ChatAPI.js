@@ -1,5 +1,5 @@
-import { api_url } from './common'
-
+import { ws_url } from './common'
+// todo: don't send when state is in connection.
 export default class ChatAPI {
     constructor (room_id, username) {
         this.room_id = room_id
@@ -8,7 +8,7 @@ export default class ChatAPI {
         this.events = ['open', 'message', 'response', 'event', 'error', 'close']
 
         // get WebSocket connection
-        const ws = new WebSocket('ws://localhost:3000')
+        const ws = new WebSocket(ws_url)
         this.ws = ws
         // bind events
         ws.onopen = () => {
@@ -56,7 +56,13 @@ export default class ChatAPI {
             }
         }
     }
-    send_message (message) {
+    ready () {
+        return this.ws && this.ws.readyState
+    }
+    send_message(message) {
+        const not_ready_exception = 'WebSocket is not in ready state'
+        if (!this.ready())
+            throw not_ready_exception
         this.ws.send(JSON.stringify({
             action: 'send',
             message

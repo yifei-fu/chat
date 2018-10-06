@@ -1,14 +1,6 @@
-const current_domain = function () {
-    var domain = window.location.hostname
-    // add port number if necessary
-    if (!new Set(['', 80, '80']).has(window.location.port)) {
-        domain += `:${window.location.port}`
-    }
-    return domain
-}
 
-const api_url = ''
+const api_url = process.env.API_URL || ''
+const ws_url = process.env.WS_URL || 'ws://localhost:3000'
+const frontend_url = process.env.FRONTEND_URL
 
-const frontend_url = current_domain()
-
-export { api_url, frontend_url }
+export { api_url, ws_url, frontend_url }
